@@ -19,7 +19,10 @@ ADD sites-enabled/demo.com /etc/nginx/sites-available/demo.com
 
 RUN mkdir -p /apps/htdocs/public/
 ADD index.html /apps/htdocs/public/index.html
-
+RUN echo "test" > /apps/htdocs/public/index.html
+RUN ln -s /etc/nginx/sites-available/demo.com /etc/nginx/sites-enabled/demo.com
+###增加默认logs文件夹
+RUN mkdir -p /apps/logs
 EXPOSE 80
 WORKDIR /runner
 ADD run.sh run.sh

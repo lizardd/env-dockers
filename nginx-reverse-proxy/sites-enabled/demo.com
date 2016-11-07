@@ -6,8 +6,8 @@
 # server {
 #          listen 80;
 #          server_name test.com;
-#          access_log /workspace/logs/test.com/access.log;
-#          error_log /workspace/logs/test.com/error.log;
+#          access_log /workspace/logs/access.log;
+#          error_log /workspace/logs/error.log;
 #          location / {
 #                  proxy_set_header   X-Real-IP            $remote_addr;
 #                  proxy_set_header   X-Forwarded-For  $proxy_add_x_forwarded_for;
