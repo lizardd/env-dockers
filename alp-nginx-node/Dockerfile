@@ -45,3 +45,10 @@ RUN apk add --no-cache curl make gcc g++ python linux-headers binutils-gold gnup
     /usr/lib/node_modules/npm/doc /usr/lib/node_modules/npm/html /usr/lib/node_modules/npm/scripts
 ############### nginx ##############
 RUN apk --no-cache add nginx
+
+
+EXPOSE 80
+WORKDIR /runner
+ADD run.sh run.sh
+RUN chmod 755 *.sh
+CMD ["./run.sh"]
