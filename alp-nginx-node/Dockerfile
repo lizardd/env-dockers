@@ -7,7 +7,7 @@ MAINTAINER lmk "ttmk008@gmail.com"
 # ENV VERSION=v7.10.0 NPM_VERSION=4
 ENV VERSION=v8.0.0 NPM_VERSION=5 YARN_VERSION=latest
 # For base builds
-ENV CONFIG_FLAGS="--fully-static --without-npm" DEL_PKGS="libstdc++" RM_DIRS=/usr/include
+# ENV CONFIG_FLAGS="--fully-static --without-npm" DEL_PKGS="libstdc++" RM_DIRS=/usr/include
 
 RUN apk add --no-cache curl make gcc g++ python linux-headers binutils-gold gnupg libstdc++ && \
   gpg --keyserver ha.pool.sks-keyservers.net --recv-keys \
@@ -45,10 +45,11 @@ RUN apk add --no-cache curl make gcc g++ python linux-headers binutils-gold gnup
     /usr/lib/node_modules/npm/doc /usr/lib/node_modules/npm/html /usr/lib/node_modules/npm/scripts
 ############### nginx ##############
 RUN apk --no-cache add nginx
-
+RUN mkdir -p /run/nginx
 
 EXPOSE 80
 WORKDIR /runner
 ADD run.sh run.sh
 RUN chmod 755 *.sh
-CMD ["./run.sh"]
+#CMD ["./run.sh"]
+ENTRYPOINT ["./run.sh"]
